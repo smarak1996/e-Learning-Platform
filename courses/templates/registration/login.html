@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %}
+{% block content %}
+<h2 style="background-color: gainsboro; padding: 15px;">Log-in</h2>
+<div class="module">
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</ p>
+        {% else %}
+    <p>Please, use the following form to log-in:</p>
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'login' %}" method="post" style="border: 1px soild azure;">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <input type="submit" value="Log-in" class="btn btn-success" style="margin-left: 120px;">
+        </form>
+    </div>
+</div>
+{% endblock %}
