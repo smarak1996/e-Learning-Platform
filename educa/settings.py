@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'courses',
+    'students',
+    'embed_video',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +58,7 @@ ROOT_URLCONF = 'educa.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,5 +123,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+#from django.urls import reverse
+#LOGIN_REDIRECT_URL = reverse('students:student_course_list')
+
+REST_FRAMEWORK = {
+ 'DEFAULT_PERMISSION_CLASSES': [
+ 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+ ]
+}
+
 
 

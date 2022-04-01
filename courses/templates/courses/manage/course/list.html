@@ -10,6 +10,9 @@
             <a href="{% url 'courses:course_edit' course.id %}" style="color: rgb(37, 223, 83); margin-right: 15px;">Edit</a>
             <a href="{% url 'courses:course_delete' course.id %}" style="color: rgb(37, 223, 83); margin-right: 15px;">Delete</a>
             <a href="{% url 'courses:course_module_update' course.id %}" style="color: rgb(37, 223, 83);">Edit modules</a>
+            {% if course.modules.count > 0 %}
+<a href="{% url 'courses:module_content_list' course.modules.first.id%}">Manage contents</a>
+{% endif %}
         </p>
     </div>
     {% empty %}
